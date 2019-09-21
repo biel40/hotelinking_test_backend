@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\PromotionalCodeUser;
 
 class PromotionalCodeUserController extends Controller
 {
@@ -34,7 +35,10 @@ class PromotionalCodeUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $promotional_code = new PromotionalCodeUser;
+        // TODO: Cambiar el atributo name por las columnas de PromotionalCodeUser
+        $promotional_code->name = $request->name;
+        $promotional_code->save();
     }
 
     /**
@@ -45,7 +49,8 @@ class PromotionalCodeUserController extends Controller
      */
     public function show($id)
     {
-        //
+        // Solicitamos al modelo el PromotionalCode con el id solicitado por GET.
+        return PromotionalCodeUser::where('id', $id)->get();
     }
 
     /**
