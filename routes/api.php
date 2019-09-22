@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Agregamos nuestra ruta al controller de PromotionalCodes
+// Agregamos nuestra ruta al controller de PromotionalCode
 Route::resource('promotionalCode', 'PromotionalCodeController');
 
 // Y hacemos o mismo para el PromotionalCodeUserController

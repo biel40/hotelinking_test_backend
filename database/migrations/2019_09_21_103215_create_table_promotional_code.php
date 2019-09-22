@@ -28,6 +28,6 @@ class CreateTablePromotionalCode extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_promotional_code');
+        Schema::dropIfExists('promotional_code');
     }
 }

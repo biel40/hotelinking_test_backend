@@ -36,8 +36,10 @@ class PromotionalCodeController extends Controller
     public function store(Request $request)
     {
         $promotional_code = new PromotionalCode;
-        // TODO: Cambiar el atributo name por las columnas de PromotionalCode.
-        $promotional_code->name = $request->name;
+ 
+        $promotional_code->code_title = $request->code_title;
+        $promotional_code->description = $request->description;
+        $promotional_code->price = $request->price;
 
         // Guardamos el cambio en nuestro modelo.
         $promotional_code->save();
