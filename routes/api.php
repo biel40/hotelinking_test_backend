@@ -17,9 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Agregamos nuestra ruta al controller de PromotionalCode
+// Custom API Endpoint Routes
 Route::resource('promotionalCode', 'PromotionalCodeController');
-
-// Y hacemos o mismo para el PromotionalCodeUserController
 Route::resource('promotionalCodeUser', 'PromotionalCodeUserController');
+
+// Login Endpoint Routes
+Route::post('/register', 'AuthenticationController@registrateUser');
+Route::post('/login', 'AuthenticationController@login');
+
 
