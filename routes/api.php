@@ -21,8 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('promotionalCode', 'PromotionalCodeController')->middleware('cors');
 Route::resource('promotionalCodeUser', 'PromotionalCodeUserController')->middleware('cors');
 
-// Login Endpoint Routes
 Route::post('/register', 'AuthenticationController@registrateUser')->middleware('cors');
 Route::post('/login', 'AuthenticationController@login')->middleware('cors');
+Route::post('/logout', 'AuthenticationController@logout')->middleware('cors');
+
 
 

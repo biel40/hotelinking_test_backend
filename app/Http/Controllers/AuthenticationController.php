@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
 {
-    // DONE!
     public function registrateUser(Request $request)
     {
         $request->validate([
@@ -31,13 +30,11 @@ class AuthenticationController extends Controller
         return response()->json(['message' => 'Usuario creado correctamente'], 201);
     }
 
-    // TODO: Vamos a por este!
     public function login(Request $request)
     {
         $loginData = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
-            // 'remember_me' => 'boolean',
         ]);
 
         if (!auth()->attempt($loginData)) {
@@ -59,9 +56,11 @@ class AuthenticationController extends Controller
 
     public function logout(Request $request)
     {
+        // TODO: Falta implementar Logout más la funcionalidad básica. Esto entre mañana y pasado 
+        // lo tienes! Aunque hay que revisar esta línea
         $request->user()->token()->revoke();
-        return response()->json(['message' =>
-            'Logged out!']);
+
+        return response()->json(['message' => 'Logged out']);
     }
 
     public function user(Request $request)
