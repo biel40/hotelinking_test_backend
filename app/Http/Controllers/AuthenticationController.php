@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
 {
-
-    //TODO: 
+    // DONE!
     public function registrateUser(Request $request)
     {
         $request->validate([
@@ -32,21 +31,22 @@ class AuthenticationController extends Controller
         return response()->json(['message' => 'Usuario creado correctamente'], 201);
     }
 
+    // TODO: Vamos a por este!
     public function login(Request $request)
     {
         $loginData = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
-            'remember_me' => 'boolean',
+            // 'remember_me' => 'boolean',
         ]);
 
-        if (!Auth::attempt($loginData)) {
+        if (!auth()->attempt($loginData)) {
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
         }
 
-        $accessToken = auth()->user()->createToken('authToken')->access_token;
+        $accessToken = auth()->user()->createToken('authToken')->accessToken;
 
         $accessToken->save();
 
@@ -61,7 +61,7 @@ class AuthenticationController extends Controller
     {
         $request->user()->token()->revoke();
         return response()->json(['message' =>
-            'Successfully logged out']);
+            'Logged out!']);
     }
 
     public function user(Request $request)
