@@ -48,12 +48,12 @@ class AuthenticationController extends Controller
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
 
-        $accessToken->save();
+        // $accessToken->save();
 
         return response()->json([
             'user' => auth()->user(),
             'token_type' => 'Bearer',
-            'access_token' => $generatedToken->accessToken,
+            'access_token' => $accessToken,
         ]);
     }
 
