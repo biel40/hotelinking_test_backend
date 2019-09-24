@@ -11,13 +11,17 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
+    protected $table = 'users';
+
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'email', 'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -38,7 +42,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // TODO: Cuidadin con esta parte:
+    // TODO:
     public function getOffers()
     {
         return $this->hasMany(PromotionalCodeUser::class);

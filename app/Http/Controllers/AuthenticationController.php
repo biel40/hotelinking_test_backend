@@ -10,20 +10,24 @@ use Illuminate\Support\Facades\Auth;
 class AuthenticationController extends Controller
 {
 
-    //TODO: Prueba este endpoint
+    //TODO: 
     public function registrateUser(Request $request)
     {
         $request->validate([
+            'name' => 'required|max:60',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed',
         ]);
 
         $user = new User([
+            'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
 
         $user->save();
+
+        $accessToken = $user->createToken('authToken')->accessToken;
 
         return response()->json(['message' => 'Usuario creado correctamente'], 201);
     }

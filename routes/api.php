@@ -18,11 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Custom API Endpoint Routes
-Route::resource('promotionalCode', 'PromotionalCodeController');
-Route::resource('promotionalCodeUser', 'PromotionalCodeUserController');
+Route::resource('promotionalCode', 'PromotionalCodeController')->middleware('cors');
+Route::resource('promotionalCodeUser', 'PromotionalCodeUserController')->middleware('cors');
 
 // Login Endpoint Routes
-Route::post('/register', 'AuthenticationController@registrateUser');
-Route::post('/login', 'AuthenticationController@login');
+Route::post('/register', 'AuthenticationController@registrateUser')->middleware('cors');
+Route::post('/login', 'AuthenticationController@login')->middleware('cors');
 
 
