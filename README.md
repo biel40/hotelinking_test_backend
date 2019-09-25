@@ -56,7 +56,38 @@ Mi fichero homestead.yaml de configuración es el siguiente:
 
 ```bash
 
-ADJUNTAR TEXTO DEL HOMESTEAD.YAML
+ip: "192.168.10.10"
+memory: 2048
+cpus: 2
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/code
+      to: /home/vagrant/code
+
+sites:
+    - map: homestead.test
+      to: /home/vagrant/code/hotelinking_server/public
+
+databases:
+    - homestead
+
+features:
+    - mariadb: false
+    - ohmyzsh: false
+    - webdriver: false
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp
 
 ```
 En el apartado de <b> folders: </b> se define donde estará ubicado el directorio local y el remoto, que estarán sincronizados entre ellos. En <b> map: </b> se tiene que indicar dónde estará nuestra carpeta sinronizada en la máquina local. En mi caso, el directorio se ubica en el home de mi usuario. Para crear el directorio, se deben ejecutar lo siguiente:
