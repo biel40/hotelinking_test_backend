@@ -192,8 +192,11 @@ DB_PASSWORD=secret
 ```
 
 Ahora haremos las migraciones la Base de Datos.
+```bash
+php artisan migrate
+```
 
-Tendremos que instalar Laravel Passport, dado que en la API REst, se utiliza para hacer login con método OAuth:
+Tendremos que instalar Laravel Passport, dado que en la API REST, se utiliza para hacer login con método OAuth:
 
 ```bash
 php artisan migrate
