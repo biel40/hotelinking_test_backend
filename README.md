@@ -139,7 +139,7 @@ secret
 
 ```
 
-Una vez hayamos entrado en MySQL, ejecutaremos las siguientes instruccones SQL para generar los esquemas:
+Una vez hayamos entrado en MySQL, ejecutaremos las siguientes instrucciones SQL para generar los esquemas:
 
 ```bash
 
@@ -159,7 +159,7 @@ cd hotelinking_test_backend
 
 ```
 
-Nos introducimos dentro de la carpeta e instalaremos las dependencias:
+Nos introducimos dentro de la carpeta e instalamos las dependencias:
 
 ```bash
 
@@ -173,13 +173,12 @@ cp .env.example .env
 
 ```
 
-Después, generamos la APP_KEY
+Después, generamos la APP_KEY:
 
 ```bash
-
  php artisan key:generate
- 
- ```
+```
+
 Ahora tendremos que configurar la conexión de la base de datos. Modificaremos estos parámetros en el fichero <b> .env </b>
 
 DB_HOST=127.0.0.1
@@ -194,13 +193,12 @@ Ahora haremos las migraciones la Base de Datos.
 Tendremos que instalar Laravel Passport, dado que en la API REst, se utiliza para hacer login con método OAuth:
 
 ```bash
-
 php artisan migrate
-php artisan passport:install
 
- ```
+php artisan passport:install
+```
  
-Ya esta la API REST funcionando. Ahora ya será solo necesario instalar la parte de Cliente de la aplicación, que se podrá encontrar en otro repositorio: 
+Ya esta la API REST funcionando. Ahora ya será solo necesario instalar la parte de Cliente de la Aplicación, que se podrá encontrar en otro repositorio: 
 
 <a href="https://github.com/biel40/hotelinking_tech_test_client.git"> https://github.com/biel40/hotelinking_tech_test_client.git </a>
 
