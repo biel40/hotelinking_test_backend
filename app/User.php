@@ -42,8 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // TODO:
-    public function getOffers()
+
+    public function promotionalCodes()
     {
         return $this->hasMany(PromotionalCodeUser::class);
     }

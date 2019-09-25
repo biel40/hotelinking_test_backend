@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\PromotionalCodeUser;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 
 class PromotionalCodeUserController extends Controller
 {
@@ -35,10 +38,29 @@ class PromotionalCodeUserController extends Controller
      */
     public function store(Request $request)
     {
-        $promotional_code = new PromotionalCodeUser;
-        // TODO: Cambiar el atributo name por las columnas de PromotionalCodeUser
-        $promotional_code->name = $request->name;
-        $promotional_code->save();
+        $request->validate([
+            'user_id' => 'required|numeric',
+            'promotional_code_id' => 'required|numeric',
+        ]);
+
+        $code = strtolower(Str::random(4));
+
+        // Mientras exista el código, iremos generando códigos únicos nuevos
+        while ($this->isCodeAvailable($code)) {
+            $code = strtolower(Str::random(4));
+        }
+
+        $promotional_code_user = new PromotionalCodeUser([
+            'user_id' => $request->user_id,
+            'promotional_code_id' => $request->promotional_code_id,
+            'code' => $code,
+            'active' => false
+        ]);
+
+        $promotional_code_user->save();
+
+        return response()->json('Vinculación Realizada Correctamente', 200);
+
     }
 
     /**
@@ -49,8 +71,7 @@ class PromotionalCodeUserController extends Controller
      */
     public function show($id)
     {
-        // Solicitamos al modelo el PromotionalCode con el id solicitado por GET.
-        return PromotionalCodeUser::where('id', $id)->get();
+        
     }
 
     /**
@@ -65,18 +86,6 @@ class PromotionalCodeUserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -86,4 +95,46 @@ class PromotionalCodeUserController extends Controller
     {
         //
     }
+
+    public function setActive(Request $request)
+    {
+        $request->validate([
+            'promotional_code_user_id' => 'required|numeric'
+        ]);
+
+        $promotional_code_user_id = PromotionalCodeUser::find($request->promotional_code_user_id);
+
+        $promotional_code_user_id->active = true;
+
+        $promotional_code_user_id->save();
+
+        return response()->json("OK", 200);;
+    }
+
+    public function getPromotionalCodesFromUser($user_id)
+    {
+
+        $promotional_codes_from_user = PromotionalCodeUser::where('user_id', $user_id)->get();
+
+        foreach ($promotional_codes_from_user as $promotional_code)
+            $promotional_codes_from_user->promotionalCode = $promotional_code->promotionalCode;
+        
+        return response()->json($promotional_codes_from_user, 200);
+
+    }
+
+    private function isCodeAvailable($code)
+    {
+        $userPromotionalCodes = PromotionalCodeUSer::all();
+
+        foreach ($userPromotionalCodes as $promotionalCodeUser) {
+            if ($code == $promotionalCodeUser->code) {
+                return true;
+            };
+        }
+
+        return false;
+
+    }
+
 }

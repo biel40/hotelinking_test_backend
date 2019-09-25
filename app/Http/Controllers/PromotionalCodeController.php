@@ -35,6 +35,7 @@ class PromotionalCodeController extends Controller
      */
     public function store(Request $request)
     {
+        /*
         $promotional_code = new PromotionalCode;
  
         $promotional_code->code_title = $request->code_title;
@@ -43,6 +44,7 @@ class PromotionalCodeController extends Controller
 
         // Guardamos el cambio en nuestro modelo.
         $promotional_code->save();
+        */
     }
 
     /**

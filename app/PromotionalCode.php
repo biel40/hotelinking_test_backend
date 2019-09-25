@@ -13,4 +13,10 @@ class PromotionalCode extends Model
 
     // Ponemos en fillable aquellos campos de la BB.DD que queramos editar
     protected $fillable = ['code_title', 'description', 'price'];
+
+    public function users()
+    {
+        return $this->hasMany(PromotionalCodeUser::class);
+    }
+
 }

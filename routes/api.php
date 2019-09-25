@@ -27,4 +27,7 @@ Route::post('/logout', 'AuthenticationController@logout')->middleware('cors');
 
 // Functionality Endpoints
 Route::get('getAllPromotionalCodes', 'PromotionalCodeController@showAll')->middleware('cors');
+Route::post('addCodeToUser', 'PromotionalCodeUserController@store')->middleware('cors');
+Route::post('activateCode', 'PromotionalCodeUserController@setActive')->middleware('cors');
+Route::get('getAllPromotionalCodesFromUser/{user_id}', 'PromotionalCodeUserController@getPromotionalCodesFromUser')->middleware('cors');
 
