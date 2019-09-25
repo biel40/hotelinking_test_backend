@@ -32,7 +32,7 @@ cd Homestead
 
 Justo a continuación, ejecutaremos el script de inicio.
 
-Para Ubuntu/Linux, ejecutaremos el siguiente comando:
+Para Ubuntu/Linux/MacOS, ejecutaremos el siguiente comando:
 
 ```bash
 
@@ -52,7 +52,7 @@ Posteriormente, tendremos que configurar la máquina Homestead. Tendremos que co
 
 Esto se puede hacer con el fichero Homestead.yaml de nuestra carpeta Homestead.
 
-Adjunto mi fichero homestead.yaml de configuración:
+Mi fichero homestead.yaml de configuración es el siguiente:
 
 ```bash
 
@@ -185,7 +185,7 @@ Ahora tendremos que configurar la conexión de la base de datos. Modificaremos e
 
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=hotelinkingDB
+DB_DATABASE=NOMBREDELABASEDEDATOS
 DB_USERNAME=root
 DB_PASSWORD=secret
 
