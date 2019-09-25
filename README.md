@@ -30,7 +30,7 @@ git clone https://github.com/laravel/homestead.git Homestead
 cd Homestead
 ```
 
-Justo a continuación, ejecutaremos el scrpit de inicio de Homestead.
+Justo a continuación, ejecutaremos el script de inicio.
 
 Para Ubuntu/Linux, ejecutaremos el siguiente comando:
 
