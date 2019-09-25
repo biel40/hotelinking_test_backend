@@ -181,12 +181,15 @@ Después, generamos la APP_KEY:
 
 Ahora tendremos que configurar la conexión de la base de datos. Modificaremos estos parámetros en el fichero <b> .env </b>
 
+```bash
+
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=hotelinkingDB
 DB_USERNAME=root
 DB_PASSWORD=secret
 
+```
 
 Ahora haremos las migraciones la Base de Datos.
 
