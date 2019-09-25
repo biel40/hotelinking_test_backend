@@ -53,8 +53,19 @@ class PromotionalCodeController extends Controller
      */
     public function show($id)
     {
-        // Solicitamos al modelo el PromotionalCode con el id solicitado por GET.
         return PromotionalCode::where('id', $id)->get();
+    }
+
+
+    /**
+     * Display all the records.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showAll()
+    {
+        return PromotionalCode::all();
     }
 
     /**
