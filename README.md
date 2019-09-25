@@ -174,8 +174,8 @@ Una vez hayamos entrado en MySQL, ejecutaremos las siguientes instrucciones SQL 
 
 ```bash
 
-create schema ; -> NOMBRE DE MI BASE DE DATOS
-create schema ; -> NOMBRE DE MI BASE DE DATOS
+create schema ; -> hotelinking_server_db
+create schema ; -> hotelinking_server_db_test
 exit;
 
 ```
