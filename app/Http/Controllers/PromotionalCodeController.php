@@ -35,16 +35,15 @@ class PromotionalCodeController extends Controller
      */
     public function store(Request $request)
     {
-        /*
+        
         $promotional_code = new PromotionalCode;
  
         $promotional_code->code_title = $request->code_title;
         $promotional_code->description = $request->description;
         $promotional_code->price = $request->price;
 
-        // Guardamos el cambio en nuestro modelo.
         $promotional_code->save();
-        */
+        
     }
 
     /**

@@ -24,10 +24,8 @@ Route::resource('promotionalCodeUser', 'PromotionalCodeUserController')->middlew
 Route::post('/register', 'AuthenticationController@registrateUser')->middleware('cors');
 Route::post('/login', 'AuthenticationController@login')->middleware('cors');
 Route::post('/logout', 'AuthenticationController@logout')->middleware('cors');
-
-// Functionality Endpoints
 Route::get('getAllPromotionalCodes', 'PromotionalCodeController@showAll')->middleware('cors');
 Route::post('addCodeToUser', 'PromotionalCodeUserController@store')->middleware('cors');
 Route::post('activateCode', 'PromotionalCodeUserController@setActive')->middleware('cors');
 Route::get('getAllPromotionalCodesFromUser/{user_id}', 'PromotionalCodeUserController@getPromotionalCodesFromUser')->middleware('cors');
-
+Route::get('checkUserHasPromotionalCode/{promotional_code_user}/{user_id}', 'PromotionalCodeUserController@userHasPromotionalCode')->middleware('cors');

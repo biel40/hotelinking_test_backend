@@ -17,7 +17,7 @@ class PromotionalCodeUserController extends Controller
      */
     public function index()
     {
-        //
+        //¡¡
     }
 
     /**
@@ -75,17 +75,6 @@ class PromotionalCodeUserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -135,6 +124,19 @@ class PromotionalCodeUserController extends Controller
 
         return false;
 
+    }
+
+    public function userHasPromotionalCode($promotional_code_id, $user_id) 
+    {
+        $userPromotionalCodes = PromotionalCodeUser::where('user_id', $user_id)->get();
+
+        foreach($userPromotionalCodes as $userPromotionalCode) {
+            if($userPromotionalCode->promotional_code_id == $promotional_code_id)
+                return response()->json(true, 200);
+        }
+
+        return response()->json(false, 200);
+    
     }
 
 }

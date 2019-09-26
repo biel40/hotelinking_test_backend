@@ -45,8 +45,6 @@ class AuthenticationController extends Controller
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
 
-        // $accessToken->save();
-
         return response()->json([
             'user' => auth()->user(),
             'token_type' => 'Bearer',
@@ -56,10 +54,6 @@ class AuthenticationController extends Controller
 
     public function logout(Request $request)
     {
-        // TODO: Falta implementar Logout más la funcionalidad básica. Esto entre mañana y pasado 
-        // lo tienes! Aunque hay que revisar esta línea
-        $request->user()->token()->revoke();
-
         return response()->json(['message' => 'Logged out']);
     }
 
