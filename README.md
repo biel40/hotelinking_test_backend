@@ -174,8 +174,8 @@ Una vez hayamos entrado en MySQL, ejecutaremos las siguientes instrucciones SQL 
 
 ```bash
 
-create schema ; -> hotelinking_server_db
-create schema ; -> hotelinking_server_db_test
+create schema hotelinking_server_db;
+create schema hotelinking_server_db_test;
 exit;
 
 ```
@@ -216,7 +216,7 @@ Ahora tendremos que configurar la conexión de la base de datos. Modificaremos e
 
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=NOMBREDELABASEDEDATOS
+DB_DATABASE=hotelinking_server_db
 DB_USERNAME=root
 DB_PASSWORD=secret
 
@@ -236,8 +236,6 @@ php artisan passport:install
 Ya esta la API REST funcionando. Ahora ya será solo necesario instalar la parte de Cliente de la Aplicación, que se podrá encontrar en otro repositorio: 
 
 <a href="https://github.com/biel40/hotelinking_tech_test_client.git"> https://github.com/biel40/hotelinking_tech_test_client.git </a>
-
-# README: Apartado de Testing
 
 
 
