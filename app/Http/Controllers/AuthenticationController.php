@@ -9,27 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
 {
-    public function registrateUser(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|max:60',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed',
-        ]);
-
-        $user = new User([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
-
-        $user->save();
-
-        $accessToken = $user->createToken('authToken')->accessToken;
-
-        return response()->json(['message' => 'Usuario creado correctamente'], 201);
-    }
-
     public function login(Request $request)
     {
         $loginData = $request->validate([
@@ -50,6 +29,27 @@ class AuthenticationController extends Controller
             'token_type' => 'Bearer',
             'access_token' => $accessToken,
         ]);
+    }
+    
+    public function registrateUser(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:60',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|confirmed',
+        ]);
+
+        $user = new User([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        $user->save();
+
+        $accessToken = $user->createToken('authToken')->accessToken;
+
+        return response()->json(['message' => 'Usuario creado correctamente'], 201);
     }
 
     public function logout(Request $request)

@@ -29,3 +29,4 @@ Route::post('addCodeToUser', 'PromotionalCodeUserController@store')->middleware(
 Route::post('activateCode', 'PromotionalCodeUserController@setActive')->middleware('cors');
 Route::get('getAllPromotionalCodesFromUser/{user_id}', 'PromotionalCodeUserController@getPromotionalCodesFromUser')->middleware('cors');
 Route::get('checkUserHasPromotionalCode/{promotional_code_user}/{user_id}', 'PromotionalCodeUserController@userHasPromotionalCode')->middleware('cors');
+Route::post('/newPromotionalCode', 'PromotionalCodeController@store')->middleware('cors');
