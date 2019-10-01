@@ -175,7 +175,7 @@ Una vez hayamos entrado en MySQL, ejecutaremos las siguientes instrucciones SQL 
 ```bash
 
 create schema hotelinking_server_db;
-create schema hotelinking_server_db_test;
+
 exit;
 
 ```
@@ -233,7 +233,7 @@ Tendremos que instalar Laravel Passport, dado que en la API REST, se utiliza par
 php artisan passport:install
 ```
  
-Ya esta la API REST funcionando. Ahora ya será solo necesario instalar la parte de Cliente de la Aplicación, que se podrá encontrar en otro repositorio: 
+Ya esta la API REST funcionando! Ahora ya será solo necesario instalar la parte de Cliente de la Aplicación, que se podrá encontrar en otro repositorio: 
 
 <a href="https://github.com/biel40/hotelinking_tech_test_client.git"> https://github.com/biel40/hotelinking_tech_test_client.git </a>
 
